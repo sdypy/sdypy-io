@@ -1,1 +1,1 @@
-from pyuff import UFF
+from pyuff import *

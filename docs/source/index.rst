@@ -1,23 +1,28 @@
-.. SDyPy project template documentation master file, created by
-   sphinx-quickstart on Wed Jul 10 08:16:05 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Welcome to ``SDyPy-io`` documentation!
+======================================
 
-Welcome to the SDyPy project template project's documentation!
-===============================================================
+This is the documentation for the ``SDyPy-io`` package, part of ``SDyPy`` framework_. Check out the project on GitHub_.
+
+To install the package, run:
+
+.. code:: bash
+
+    pip install sdypy-io
+
+or install the full ``SDyPy`` package:
+
+.. code:: bash
+
+    pip install sdypy
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   getting_started
-   code
+   uff
+   lvm
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. _GitHub: https://github.com/sdypy/sdypy-io
+.. _framework: https://github.com/sdypy
