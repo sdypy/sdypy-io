@@ -1,7 +1,3 @@
 # Package requirements for users
-numpy>=1.11.0
-scipy>=1.2.0
-matplotlib>=3.0.0
-pyMRAW>=0.2.0
-tqdm>=4.25.0
+pyuff
 sphinx-copybutton>=0.5.2

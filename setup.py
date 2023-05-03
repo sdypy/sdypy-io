@@ -1,13 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Copyright (C) 2014-2017 Primož Čermelj, Matjaž Mršnik, Miha Pirnat, Janko Slavič, Blaž Starc (in alphabetic order)
+# 
+# This file is part of pyuff.
+# 
+# pyFRF is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, version 3 of the License.
+# 
+# pyuff is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with pyuff.  If not, see <http://www.gnu.org/licenses/>.
+
 import os
 import re
 from setuptools import setup
 
-base_path = os.path.dirname(__file__)
-
-# Read the project version from "__init__.py"
 regexp = re.compile(r'.*__version__ = [\'\"](.*?)[\'\"]', re.S)
 
-init_file = os.path.join(base_path, 'sdypy_template_project', '__init__.py')
+base_path = os.path.dirname(__file__)
+
+init_file = os.path.join(base_path, 'sdypy/io', '__init__.py')
 with open(init_file, 'r') as f:
     module_content = f.read()
 
@@ -18,11 +35,11 @@ with open(init_file, 'r') as f:
         raise RuntimeError(
             'Cannot find __version__ in {}'.format(init_file))
 
-# Read the "README.rst" for project description
-with open('README.rst', 'r') as f:
-    readme = f.read()
 
-# Automatically parse the requirements.txt file for project requirements
+with open(os.path.join(base_path, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
+
+
 def parse_requirements(filename):
     ''' Load requirements from a pip requirements file '''
     with open(filename, 'r') as fd:
@@ -35,22 +52,14 @@ def parse_requirements(filename):
 
 requirements = parse_requirements('requirements.txt')
 
-if __name__ == '__main__':
-    setup(
-        name='sdypy_template_project',
-        description='A project template for the sdPy effort.',
-        long_description=readme,
-        license='MIT license',
-        url='https://github.com/sdypy/sdypy_template_project',
-        version=version,
-        author='Janko Slavič, Domen Gorjup, Klemen Zaletelj',
-        author_email='janko.slavic@fs.uni-lj.si',
-        maintainer='Janko Slavič, Domen Gorjup, Klemen Zaletelj',
-        maintainer_email='janko.slavic@fs.uni-lj.si',
-        install_requires=requirements,
-        keywords=['template project'],
-        packages=['sdypy_template_project'],
-        classifiers=['Development Status :: 3 - Alpha',
-                     'Intended Audience :: Developers',
-                     'Programming Language :: Python :: 3.6']
-    )
+setup(name='sdypy-io',
+      version=version,
+      author='Primož Čermelj, Janko Slavič, et al.',
+      author_email='janko.slavic@fs.uni-lj.si',
+      description='Reading and writing of data in structural dynamics.',
+      url='https://github.com/sdypy/sdypy-io',
+      packages=['sdypy.io'],
+      long_description=long_description,
+      install_requires=requirements,
+      keywords='read/write, io, structural dynamics, UFF, UNV, Universal File Format',
+      )

@@ -1,190 +1,167 @@
-SDyPy Template Project
------------------------
+sdypy-io
+========
 
-A tempalte to help you start a new projext in the SDyPy ecosystem.
+Read/write experimental and analysis data in the field of structural dynamics. Check out the `documentation <https://pyuff.readthedocs.io/en/latest/index.html>`_.
 
+Currently, the ``SDyPy-io`` package supports the reading and writing of the UFF (Universal File Format) files.
 
-Using the template
-------------------
+Universal File Format read and write
+------------------------------------
+The UFF class is defined to manipulate the UFF (Universal File Format) files.
 
-To use this template, you have multiple options. The following two will cover most use cases:
+Currently supported UFF data-set types:
+- 15
+- 55
+- 58
+- 58b
+- 82
+- 151
+- 164
+- 2411
+- 2412
+- 2414
+- 2420
+- 2429
 
-1. You can use GitHub's templating functionality. A new repository will be created on GitHub for your project. Use this option if your project does not yet have an online repository.
-   
-   Click the "Use this template" button on the project template Github repository (see image below).
+To install the package, run:
 
-    .. image:: images/use_template.png
+.. code:: bash
 
-   Simply select and confirm a name for your new repository, and a copy of this template will be created for you. 
+   pip install sdypy.io
 
-   You can now clone your new repository onto your local machine. If your new repository is located at ``https://github.com/<your_name>/<my_new_project>``, for example:
+or install the full ``sdypy`` package:
 
-    .. code-block:: console
+.. code:: bash
 
-        $ git clone https://github.com/<your_name>/<my_new_project>
+   pip install sdypy
 
-   A folder named ``<my_new_project>`` will be created on your machine. It is already setup with a connection to your new GitHub repository, and you can begin developing your package!
+UFF Showcase
+------------
 
-2. If you already have a repository for your project, located for example at ``https://github.com/<your_name>/<my_existing_project>``, 
-   you can use our template by cloning in onto you local machine. This downloads the files into a local folder, with a connection with the online repository already set up.
-   Do this by running :
+To analyse UFF file we first load the uff module and example file:
 
-    .. code-block:: console
+.. code:: python
 
-        $ git clone https://github.com/sdypy/sdypy_template_project
+    from sdypy import io
 
-   Our template files will be downloaded into the ``sdypy_template_project`` folder. 
-   
-   You can now either copy these files into you existing local project folder, or connect the cloned repository in the ``sdypy_template_project`` folder with your existing online repository :
+    uff_file = io.uff.UFF('data/beam.uff')
 
-    .. code-block:: console
+To check which datasets are written in the file use:
 
-        $ git remote rm origin
-        $ git remote add origin https://github.com/ladisk/<my_existing_project>.git
+.. code:: python
 
-You are now setup to begin working on your project.
+    uff_file.get_set_types()
 
-To begin development, install the required packages with :
+Reading from the UFF file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+To load all datasets from the UFF file to data object use:
 
-    $ python -m pip install -r requirements.dev.txt
+.. code:: python
 
-Now you can replace the core source code modules in ``sdypy_template_project/`` with your code.
+    data = uff_file.read_sets()
 
-Remember to also replace the poject name (``sdypy_template_project``) with your own project name in the following files:
 
-- setup.py
-- README.rst
-- CONTRIBUTING.rst
-- the "sdypy_template_project" directory name
+The first dataset 58 contains following keys:
 
-Consider adding unit-tests for your project by modifying the files, found in ``tests/``. The provided test file structure is setup to work with `pytest <https://docs.pytest.org/en/latest/>`_.
+.. code:: python
 
-To also use the sphinx documentation, modify files in ``docs/source``, or remove the ``docs/`` folder and quickstart a fresh documentation version using the ``sphinx-quickstart`` command (see `Sphinx - Getting started <https://www.sphinx-doc.org/en/master/usage/quickstart.html>`_ for more info).
+    data[4].keys()
 
+Most important keys are ``x``: x-axis and ``data``: y-axis that define the stored response:
 
-File structure
---------------
+.. code:: python
 
-The project code is structured as follows:
-
-setup.py
-    the Python setup script, used to package the project
-
-requirements.txt
-    a list of packages, required to use this project
-    
-requirements.dev.txt
-    a list of packages, required to develop this project
-
-README.rst
-    the main projecdt description / documentation file
-
-CONTRIBUTING.rst
-    a document containing information for potential contrubutors (developers) of the package
-
-License
-    the project License
-
-.travis.yml
-    contains the set of instructions to run wit the `TravisCI <https://travis-ci.org/>`_ continuous integration service after the file repository has been updated
-
-.gitignore
-    defines the files in the project directory to be excluded from version control
-
-tests/
-    contains project unit-tests
-
-sdypy_template_project/
-    contains the core project source code, separated into meaningful sub-modules
-
-examples/
-    scripts, notebooks with examples to showcase the project
-
-docs/
-    the documentation source and built files
-
-
-(For a more complex and custumuzable project structure, see the `Cookiecutter project <https://github.com/audreyr/cookiecutter-pypackage>`_.)
-
-
-Building the documentation
---------------------------
-
-By setting up `ReadTheDocs <https://readthedocs.org/>`_, your project documentation can automatically be built and puclished as a publicly available website.
-
-To test your documentation locally, run the following (starting from the main project directory) :
-
-.. code-block:: console
-
-    $ cd docs
-    $ make clean
-    $ make html
-
-Your documentation files will be built inside the ``docs/build/html`` folder.
-
-
-Publishing the project
-----------------------
-
-You can build your project and publish it to the `Python Package Index <https://pypi.org/>`_ with the following basic steps:
-
-1. Build you project source code :
-
-.. code-block:: console
-
-    $ python setup.py sdist bdist_wheel
-
-The built project can be tested locally by installing the resulting ``.whl`` file, found in the ``dist/`` folder  in a new virtual environemtn:
-
-.. code-block:: console
-
-    $ python -m virtualenv venv
-    $ venv/Scripts/activate
-    $ python -m pip install <sdypy_template_project-#>.whl 
-
-(replace ``<sdypy_template_project-#>`` above with the actual ``.whl`` file name).
-
-2. Upload the distribution files from ``dist/`` to PyPI :
-
-.. code-block:: console
-
-    $ python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-
-(``--repository-url https://test.pypi.org/legacy/`` uploads the package to the test PyPI for testing. To publish you package to the main PyPI repository, simply ommit this option from the above command.)
-
-For more information on the publishng process, see this simpel `Python packaging tutorial <https://packaging.python.org/tutorials/packaging-projects/>`_.
-
-3. After that,  the sdypy_template_project will be available on PyPI and can be installed with `pip <https://pip.pypa.io>`_.
-
-.. code-block:: console
-
-    $ pip install sdypy_template_project
-
-After installing sdypy_template_project you can use it like any other Python module.
-
-Here is a simple example with the current example code:
-
-.. code-block:: python
-
-    import sdypy_template_project as iep
-    import numpy as np
-    import matplotlib.pyplot as plt
-
-    video = np.load('examples/speckle.npy', mmap_mode='r')
-    results = iep.get_displacements(video, point=[5, 5], roi_size=[7, 7])
-
-    plt.figure()
-    plt.plot(results[0], label='x [px]')
-    plt.plot(results[1], label='y [px]')
-    plt.legend()
+    plt.semilogy(data[4]['x'], np.abs(data[4]['data']))
+    plt.xlabel('Frequency  [Hz]')
+    plt.ylabel('FRF Magnitude [dB m/N]')
+    plt.xlim([0,1000])
     plt.show()
 
-You can also run this basic example by running the following command in the project base direcotry:
 
-.. code-block:: console
+Writing measurement data to UFF file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    $ python -m examples.basic_example
+Loading the accelerance data:
 
-The `Read the Docs page <http://sdypy_template_project.readthedocs.io>`_ provides the project documentation.
+.. code:: python
+
+    measurement_point_1 = np.genfromtxt('data/meas_point_1.txt', dtype=complex)
+    measurement_point_2 = np.genfromtxt('data/meas_point_2.txt', dtype=complex)
+    measurement_point_3 = np.genfromtxt('data/meas_point_3.txt', dtype=complex)
+
+.. code:: python
+
+    measurement_point_1[0] = np.nan*(1+1.j)
+
+.. code:: python
+
+    measurement = [measurement_point_1, measurement_point_2, measurement_point_3]
+
+Creating the UFF file where we add dataset 58 for measurement consisting of the dictionary-like keys containing the measurement data and the information about the measurement:
+
+.. code:: python
+
+    for i in range(3):
+        print('Adding point {:}'.format(i + 1))
+        response_node = 1
+        response_direction = 1
+        reference_node = i + 1
+        reference_direction = 1
+        acceleration_complex = measurement[i]
+        frequency = np.arange(0, 1001)
+        name = 'TestCase'
+        data = {'type':58,
+                'func_type': 4,
+                'rsp_node': response_node,
+                'rsp_dir': response_direction,
+                'ref_dir': reference_direction,
+                'ref_node': reference_node,
+                'data': acceleration_complex,
+                'x': frequency,
+                'id1': 'id1',
+                'rsp_ent_name': name,
+                'ref_ent_name': name,
+                'abscissa_spacing':1,
+                'abscissa_spec_data_type':18,
+                'ordinate_spec_data_type':12,
+                'orddenom_spec_data_type':13}
+        uffwrite = io.uff.UFF('./data/measurement.uff')
+        uffwrite.write_set(data,'add')
+
+Or we can use support function ``prepare_58`` to prepare the dictionary for creating the UFF file. Functions for other datasets can be found in `supported datasets <https://pyuff.readthedocs.io/en/latest/Supported_datasets.html>`_.
+
+.. code:: python
+
+    for i in range(3):
+        print('Adding point {:}'.format(i + 1))
+        response_node = 1
+        response_direction = 1
+        reference_node = i + 1
+        reference_direction = 1
+        acceleration_complex = measurement[i]
+        frequency = np.arange(0, 1001)
+        name = 'TestCase'
+        data = io.uff.prepare_58(func_type=4,
+                                rsp_node=response_node,
+                                rsp_dir=response_direction,
+                                ref_dir=reference_direction,
+                                ref_node=reference_node,
+                                data=acceleration_complex,
+                                x=frequency,
+                                id1='id1',
+                                rsp_ent_name=name,
+                                ref_ent_name=name,
+                                abscissa_spacing=1,
+                                abscissa_spec_data_type=18,
+                                ordinate_spec_data_type=12,
+                                orddenom_spec_data_type=13)
+
+|pytest|
+
+|binder| to test the *pyuff Showcase.ipynb* online.
+
+.. |binder| image:: http://mybinder.org/badge.svg
+   :target: http://mybinder.org:/repo/ladisk/pyuff
+.. |pytest| image:: https://github.com/ladisk/pyuff/actions/workflows/python-package.yml/badge.svg
+    :target: https://github.com/ladisk/pyuff/actions
