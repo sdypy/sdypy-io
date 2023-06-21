@@ -3,17 +3,17 @@ Welcome to ``SDyPy-io`` documentation!
 
 This is the documentation for the ``SDyPy-io`` package, part of ``SDyPy`` framework_. Check out the project on GitHub_.
 
-To install the package, run:
+To use the package, install the ``sdypy`` package:
 
 .. code:: bash
 
-    pip install sdypy-io
+   pip install sdypy
 
-or install the full ``SDyPy`` package:
+The ``io`` module is imported as follows:
 
-.. code:: bash
+.. code:: python
 
-    pip install sdypy
+   from sdypy import io
 
 
 .. toctree::
