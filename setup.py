@@ -42,6 +42,7 @@ setup(name='sdypy-io',
       url='https://github.com/sdypy/sdypy-io',
       packages=['sdypy.io'],
       long_description=long_description,
+      long_description_content_type='text/x-rst',
       install_requires=requirements,
       keywords='read/write, io, structural dynamics, UFF, UNV, Universal File Format, LVM',
       )

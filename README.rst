@@ -5,17 +5,17 @@ Read/write experimental and analysis data in the field of structural dynamics. C
 
 Currently, the ``SDyPy-io`` package supports the reading and writing of the UFF (Universal File Format) files and reading of the LVM files.
 
-To install the package, run:
-
-.. code:: bash
-
-   pip install sdypy.io
-
-or install the full ``sdypy`` package:
+To use the package, install the ``sdypy`` package:
 
 .. code:: bash
 
    pip install sdypy
+
+The ``io`` module is imported as follows:
+
+.. code:: python
+
+   from sdypy import io
 
 Universal File Format read and write
 ------------------------------------
