@@ -1,21 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# Copyright (C) 2014-2017 Primož Čermelj, Matjaž Mršnik, Miha Pirnat, Janko Slavič, Blaž Starc (in alphabetic order)
-# 
-# This file is part of pyuff.
-# 
-# pyFRF is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, version 3 of the License.
-# 
-# pyuff is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with pyuff.  If not, see <http://www.gnu.org/licenses/>.
-
 import os
 import re
 from setuptools import setup
@@ -54,12 +36,12 @@ requirements = parse_requirements('requirements.txt')
 
 setup(name='sdypy-io',
       version=version,
-      author='Primož Čermelj, Janko Slavič, et al.',
+      author='Janko Slavič, et al.',
       author_email='janko.slavic@fs.uni-lj.si',
       description='Reading and writing of data in structural dynamics.',
       url='https://github.com/sdypy/sdypy-io',
       packages=['sdypy.io'],
       long_description=long_description,
       install_requires=requirements,
-      keywords='read/write, io, structural dynamics, UFF, UNV, Universal File Format',
+      keywords='read/write, io, structural dynamics, UFF, UNV, Universal File Format, LVM',
       )

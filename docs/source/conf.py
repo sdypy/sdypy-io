@@ -21,13 +21,13 @@ sys.setrecursionlimit(1500)
 # -- Project information -----------------------------------------------------
 
 project = 'sdypy-io'
-copyright = '2014-2017 Primož Čermelj, Matjaž Mršnik, Miha Pirnat, Janko Slavič, Blaž Starc'
-author = 'Primož Čermelj, Matjaž Mršnik, Miha Pirnat, Janko Slavič, Blaž Starc, et al.'
+copyright = '2023, Janko Slavič, et al.'
+author = 'Janko Slavič, et al.'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '2014'
+release = '2023'
 
 
 # -- General configuration ---------------------------------------------------
@@ -137,7 +137,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'sdypy-io.tex', 'sdypy-io Documentation',
-     'Primož Čermelj, Matjaž Mršnik, Miha Pirnat, Janko Slavič, Blaž Starc', 'manual'),
+     'Janko Slavič, et al.', 'manual'),
 ]
 
 
