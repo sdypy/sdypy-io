@@ -107,3 +107,6 @@ venv.bak/
 
 # VSCode
 .vscode/
+
+# other
+server_user_id.txt

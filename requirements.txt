@@ -1,4 +1,4 @@
 # Package requirements for users
 pyuff==2.1
 lvm-read==1.20
-sphinx-copybutton>=0.5.2
+pyMRAW>=0.30
