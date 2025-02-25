@@ -23,6 +23,7 @@ The ``io`` module is imported as follows:
    uff
    lvm
    mraw
+   sfmov
 
 
 .. _GitHub: https://github.com/sdypy/sdypy-io
