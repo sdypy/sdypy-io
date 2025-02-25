@@ -17,6 +17,7 @@ A simple example:
 
     # Get data from sfmov file
     data = pysfmov.get_data(filename) 
+    
     # Get meta data from sfmov file
     meta_data = pysfmov.get_meta_data(filename)
 
