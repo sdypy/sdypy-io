@@ -1,2 +1,2 @@
-def test_basic():
-    assert True
+def test_import():
+    from sdypy import io
