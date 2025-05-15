@@ -25,9 +25,9 @@ copyright = '2023, Janko Slavič, et al.'
 author = 'Janko Slavič, et al.'
 
 # The short X.Y version
-version = ''
+version = '0.3'
 # The full version, including alpha/beta/rc tags
-release = '2023'
+release = '0.3.0'
 
 
 # -- General configuration ---------------------------------------------------
