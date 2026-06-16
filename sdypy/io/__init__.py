@@ -1,6 +1,4 @@
-"""
-A project template for the SDyPy effort..
-"""
+"""sdypy.io - unified I/O for structural dynamics: UFF (pyuff), LVM (lvm_read), MRAW (pyMRAW) and SFMOV readers exposed under the sdypy namespace."""
 
 from importlib.metadata import version, PackageNotFoundError
 

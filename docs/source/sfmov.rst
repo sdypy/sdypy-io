@@ -10,15 +10,15 @@ A simple example:
 .. code-block:: python
 
     # Import the module
-    import pysfmov 
+    from sdypy import io
 
     # Set the path and the filename
-    filename = './data/rec.sfmov' 
+    filename = './data/rec.sfmov'
 
     # Get data from sfmov file
-    data = pysfmov.get_data(filename) 
+    data = io.sfmov.get_data(filename)
 
     # Get meta data from sfmov file
-    meta_data = pysfmov.get_meta_data(filename)
+    meta_data = io.sfmov.get_meta_data(filename)
 
 For reference, see the `pyMRAW <https://github.com/LolloCappo/pysfmov>`_.
