@@ -7,7 +7,6 @@ Run with:
     <venv>/python.exe -m pytest tests -q
 from the sdypy-io clone root.
 """
-import struct
 import numpy as np
 import pytest
 
