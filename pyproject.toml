@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sdypy-io"
-version = "0.3.2"
+version = "0.4.0"
 authors = [{name = "Janko Slavič et al.", email = "janko.slavic@fs.uni-lj.si"}]
 maintainers = [{name = "Janko Slavič et al.", email = "janko.slavic@fs.uni-lj.si"}]
 license = "MIT"
@@ -18,28 +18,50 @@ dependencies = [
     "pyMRAW>=0.30",
 ]
 classifiers = [
-    'Development Status :: 5 - Production/Stable',
-    'Intended Audience :: Developers',
-    'Topic :: Scientific/Engineering',
-    'Programming Language :: Python :: 3.10',
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering",
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
-[tool.hatch.build.targets.wheel]
-include = ["sdypy"]
-
 [project.optional-dependencies]
-dev = [
+docs = [
     "sphinx",
+    "pydata-sphinx-theme",
+    "sphinx-copybutton>=0.5.2",
+]
+dev = [
+    "sdypy-io[docs]",
     "twine",
     "wheel",
     "pytest",
     "build",
-    "sphinx-rtd-theme",
-    "sphinx-copybutton>=0.5.2",
+    "flake8",
 ]
 
 [project.urls]
 homepage = "https://github.com/sdypy/sdypy-io"
 documentation = "https://sdypy-io.readthedocs.io/en/latest/index.html"
 source = "https://github.com/sdypy/sdypy-io"
+
+[tool.hatch.build.targets.wheel]
+packages = ["sdypy"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "sdypy/",
+    "tests/",
+    "docs/",
+    "README.rst",
+    "License",
+    "pyproject.toml",
+    "readthedocs.yaml",
+    "CONTRIBUTING.rst",
+]
+exclude = [
+    "docs/_build/",
+    "docs/build/",
+]
