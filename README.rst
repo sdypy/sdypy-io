@@ -29,11 +29,14 @@ Currently supported UFF data-set types:
    - 82
    - 151
    - 164
+   - 1858
+   - 2400
    - 2411
    - 2412
    - 2414
    - 2420
    - 2429
+   - 2467
 
 LVM file format
 ---------------
