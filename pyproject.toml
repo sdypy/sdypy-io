@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sdypy-io"
-version = "0.3.1"
+version = "0.3.2"
 authors = [{name = "Janko Slavič et al.", email = "janko.slavic@fs.uni-lj.si"}]
 maintainers = [{name = "Janko Slavič et al.", email = "janko.slavic@fs.uni-lj.si"}]
 license = "MIT"
@@ -13,8 +13,8 @@ readme = "README.rst"
 keywords = ['read/write', 'io', 'structural dynamics', 'UFF', 'UNV', 'Universal File Format', 'LVM', 'MRAW']
 requires-python = ">=3.10"
 dependencies = [
-    "pyuff==2.1",
-    "lvm-read==1.20",
+    "pyuff>=2.1",
+    "lvm-read>=1.20",
     "pyMRAW>=0.30",
 ]
 classifiers = [
